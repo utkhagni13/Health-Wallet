@@ -1,0 +1,45 @@
+.row_display {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 90%;
+    overflow-x: hidden;
+    height: 100vh;
+    color: var(--themeColor);
+    font-weight: 900;
+}
+
+.my_info {
+    position: relative;
+    top: 40%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 50%;
+    margin-left: 3rem;
+}
+
+.hi {
+    font-size: 2rem;
+    color: rgb(194, 0, 0);
+}
+
+.name {
+    font-size: 4rem;
+}
+
+@media screen and (max-width: 768px) {
+    .row_display {
+        background-position: 90%;
+    }
+    .my_info {
+        top: 65%;
+        width: 50%;
+        margin-left: 1rem;
+    }
+    .hi {
+        font-size: 1.8rem;
+    }
+    .name {
+        font-size: 2.5rem;
+    }
+}

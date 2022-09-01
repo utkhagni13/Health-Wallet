@@ -1,0 +1,57 @@
+/****** Default font ******/
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700&display=swap");
+
+/****** Default CSS ******/
+:root {
+    --navbarHeight: 4rem;
+    --bodyFont: "Source Sans Pro", sans-serif;
+    --smallGap: 1rem;
+    --smallestGap: 0.5rem;
+
+    --bigFontSize: 2.5rem;
+    --smallFontSize: 1.2rem;
+    --fontSize: 1.5rem;
+
+    --textColor: #fff;
+    --bodyColor: rgb(36, 34, 34);
+    --themeColor: #000;
+    --buttonColor: rgb(245, 237, 0);
+}
+
+@media screen and (max-width: 768px) {
+    :root {
+        --navbarHeight: 4rem;
+        --bigFontSize: 1.5rem;
+        --fontSize: 1rem;
+    }
+}
+
+body {
+    font-family: var(--bodyFont);
+    font-size: var(--fontSize);
+    color: var(--textColor);
+    background-color: var(--bodyColor);
+}
+
+.my_container {
+    min-height: 100vh;
+    padding: var(--navbarHeight) 0 0 0;
+}
+
+.common_btn button {
+    padding: 5px 15px;
+    background-color: var(--themeColor);
+    border: 1px solid var(--buttonColor);
+    border-width: 2px;
+    border-radius: 30px;
+    color: var(--textColor);
+    font-size: var(--smallFontSize);
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+        background-color: var(--buttonColor);
+        color: var(--themeColor);
+        border-color: var(--themeColor);
+    }
+}

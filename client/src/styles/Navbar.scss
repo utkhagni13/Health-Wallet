@@ -1,0 +1,104 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 var(--smallGap) 0 var(--smallGap);
+    background-color: var(--themeColor);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    color: var(--textColor);
+    height: var(--navbarHeight);
+    font-size: var(--smallFontSize);
+}
+
+.display_hamburger_icon {
+    z-index: 15;
+    &:hover {
+        cursor: pointer;
+        border-color: red;
+    }
+}
+
+.common_btn {
+    display: block;
+    margin-top: auto;
+    margin-bottom: auto;
+    button {
+        padding: 5px 15px;
+        background-color: var(--themeColor);
+        border: 1px solid var(--buttonColor);
+        border-width: 2px;
+        border-radius: 30px;
+        color: var(--textColor);
+        font-size: var(--smallFontSize);
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.2s ease-in-out;
+        &:hover {
+            background-color: var(--buttonColor);
+            color: var(--themeColor);
+            border-color: var(--themeColor);
+        }
+    }
+}
+
+.hide_hamburger_icon {
+    display: none;
+}
+
+.sidebar {
+    background-color: yellow;
+    top: 0;
+}
+
+.links {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    p {
+        color: var(--textColor);
+        text-decoration: none;
+        display: block;
+        margin-top: auto;
+        margin-bottom: auto;
+        padding: 5px 10px;
+        &:hover {
+            cursor: pointer;
+            border-bottom: 2px solid var(--buttonColor);
+        }
+    }
+}
+
+.logout-btn {
+    button {
+        border: 2px solid var(--buttonColor3);
+        &:hover {
+            background-color: var(--buttonColor3);
+        }
+    }
+}
+
+.menu_item {
+    display: flex;
+    gap: 3px;
+    div {
+        display: block;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+}
+
+.hover_field {
+    color: var(--textColor);
+    text-decoration: none;
+    display: block;
+    margin-bottom: auto;
+    margin-top: auto;
+    &:hover {
+        cursor: pointer;
+        border-bottom: 2px solid var(--buttonColor);
+    }
+}

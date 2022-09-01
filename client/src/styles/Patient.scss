@@ -1,0 +1,172 @@
+body,
+html {
+    margin: 0;
+    height: 100%;
+    /* background-image: url("https://static.storyweaver.org.in/illustrations/58816/large/3.jpg"); */
+    background-image: url("https://www.teahub.io/photos/full/364-3648044_blue-white-background-vector-vector-blue-and-white.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/*********************** the outermost main div ***********************/
+.main {
+    display: flex;
+    font-family: "Berkshire Swash", cursive;
+    font-family: "Bowlby One SC", cursive;
+    font-family: "EB Garamond", serif;
+    font-family: "Nunito", sans-serif;
+}
+
+.company_logo,
+.sign_in {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/*********************** css for the left section ***********************/
+.company_logo p {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: dimgray;
+    margin: 0;
+}
+
+.company_logo a {
+    text-decoration: none;
+    color: rgb(5, 168, 213);
+    font-size: 1.2rem;
+}
+
+/*********************** css for the right section ***********************/
+/*********************** form div ***********************/
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: white;
+    text-align: center;
+    border: 1px solid rgb(5, 168, 213);
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+        rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+.form p {
+    font-size: 1rem;
+}
+
+/*********************** Sign In heading on right side ***********************/
+h2 {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: dimgray;
+}
+
+/*********************** About company heading on the right side ***********************/
+.company_about {
+    border-bottom: 1px solid rgb(179, 223, 235);
+}
+.company_about div {
+    padding: 1.5rem 3rem;
+}
+.company_about p {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: dimgray;
+    margin: 0;
+}
+.company_about #text2 {
+    color: rgb(5, 168, 213);
+}
+
+/*********************** form-input div ***********************/
+.form_inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1.5rem 3rem;
+    font-size: 1.2rem;
+}
+
+.form_inputs a {
+    text-decoration: none;
+    color: rgb(5, 168, 213);
+    font-size: 1rem;
+}
+
+/*********************** setting CSS for the inputs and buttons in the form ***********************/
+label {
+    display: block;
+    cursor: text;
+    transform: translate(0, -2.75rem);
+}
+
+input {
+    border: none;
+    text-align: left;
+    border-bottom: 1px solid rgb(187, 187, 187);
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+    width: 100%;
+    font-size: 1rem;
+}
+input:focus {
+    outline: none;
+    border-bottom: 1px solid rgb(5, 168, 213);
+}
+
+button {
+    border: none;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+    border-radius: 5px;
+    background-color: rgb(5, 168, 213);
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    font-weight: 540;
+    width: 100%;
+}
+
+@supports (not (-ms-ime-align: auto)) {
+    label {
+        color: rgb(187, 187, 187);
+        text-align: left;
+        font-size: 0.8rem;
+        transform: translate(0.25rem, -1.5rem);
+        transition: all 0.2s ease-out;
+    }
+
+    input:focus + label,
+    input:not(:placeholder-shown) + label {
+        color: rgb(5, 168, 213);
+        text-align: left;
+        transform: translate(0, -2.75rem);
+    }
+}
+
+/*********************** for the forgot password link ***********************/
+.password {
+    position: relative;
+}
+.forgot_password {
+    position: absolute;
+    right: 0px;
+    top: 20px;
+    bottom: 0px;
+    z-index: 2;
+    color: rgb(187, 187, 187) !important;
+    font-size: 0.8rem !important;
+}
+
+/*********************** Setting up Responsiveness ***********************/
+@media only screen and (max-width: 768px) {
+    .main {
+        flex-direction: column;
+    }
+}
