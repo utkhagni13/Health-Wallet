@@ -33,8 +33,8 @@ const App = () => {
     const [ehrContract, setEHRContract] = useState(null);
     const [role, setRole] = useState("");
 
-    const registerDoctor = async (name, addr) => {
-        const response = await ehrContract.methods.setDoctorDetails(1, addr, name).send({
+    const registerDoctor = async (name, spec, addr) => {
+        const response = await ehrContract.methods.setDoctorDetails(1, addr, name, spec).send({
             from: currentAccount,
             value: Web3.utils.toWei("0.01"),
             gas: Web3.utils.toHex(800000),

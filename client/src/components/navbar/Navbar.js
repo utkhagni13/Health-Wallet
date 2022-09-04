@@ -11,6 +11,7 @@ import {
     MdPersonalInjury,
     MdPersonAddAlt1,
     MdBloodtype,
+    MdHealthAndSafety,
 } from "react-icons/md";
 
 var styles = {
@@ -209,7 +210,18 @@ const Navbar = ({ loggedIn, account, role }) => {
         <div className="navbar">
             <div className="common_btn">
                 <a href="/" rel="noreferrer">
-                    <button>{!loggedIn ? "Hello User" : "Logout"}</button>
+                    <button>
+                        {!loggedIn ? (
+                            <div className="menu_item">
+                                <div style={{ marginTop: "5px" }}>
+                                    <MdHealthAndSafety />
+                                </div>
+                                <div>Health-Wallet</div>
+                            </div>
+                        ) : (
+                            "Logout"
+                        )}
+                    </button>
                 </a>
             </div>
             {mobileView ? DisplayMobile() : DisplayDesktop()}

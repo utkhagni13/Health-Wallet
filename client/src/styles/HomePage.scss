@@ -59,6 +59,15 @@
     }
 }
 
+.inside_welcome {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    input {
+        width: 100%;
+    }
+}
+
 .inp {
     padding: 10px;
     border: 1px solid black;

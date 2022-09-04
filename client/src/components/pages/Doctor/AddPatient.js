@@ -19,22 +19,24 @@ const AddPatient = (props) => {
                 <div className="welcome">
                     <input
                         type="text"
-                        placeholder="Name"
-                        className="inp"
-                        onChange={(e) => setName(e.target.value)}
-                    />
-                    <input
-                        type="text"
                         placeholder="Ethereum address"
                         className="inp"
                         onChange={(e) => setAddr(e.target.value)}
                     />
-                    <input
-                        type="number"
-                        placeholder="Age"
-                        className="inp"
-                        // onChange={(e) => setAddr(e.target.value)}
-                    />
+                    <div className="inside_welcome">
+                        <input
+                            type="text"
+                            placeholder="Name"
+                            className="inp"
+                            onChange={(e) => setName(e.target.value)}
+                        />
+                        <input
+                            type="number"
+                            placeholder="Age"
+                            className="inp"
+                            // onChange={(e) => setAddr(e.target.value)}
+                        />
+                    </div>
                     <button onClick={handleRegister}>Register</button>
                 </div>
             </div>

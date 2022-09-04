@@ -12,6 +12,7 @@ const DoctorDetails = (props) => {
             if (!details._state) {
                 details._name = "N.A.";
                 details._drId = "N.A.";
+                details._speciality = "N.A.";
             }
         }
         setDoctorSearch(details);
@@ -35,6 +36,7 @@ const DoctorDetails = (props) => {
                     <p>Search Results</p>
                     <p>Name: {doctorSearch._name}</p>
                     <p>Address: {doctorSearch._drId}</p>
+                    <p>Department: {doctorSearch._speciality}</p>
                 </div>
             </div>
         </div>

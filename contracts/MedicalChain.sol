@@ -42,12 +42,15 @@ contract MedicalChain {
         bool state; // To check whether the doctor is registered or not
         address dr_Id; // Address of doctor
         string d_Name; // Name of doctor
+        string d_speciality;
     }
 
     struct Patient {
         bool state; // To check whether patient is genuine
         address pa_Id; // Address of registered patient
         string pa_Name; // Name of Patient Name
+        string pa_BloodGroup; // blood group of the patient
+        address hospital; // Hospital maintaining health records of the patient
         string[] pa_Records; // Used to store the prescription records of corresponding patients
     }
 
@@ -66,10 +69,11 @@ contract MedicalChain {
     function setDoctorDetails(
         bool _state,
         address _drId,
-        string memory _name
+        string memory _name,
+        string memory _speciality
     ) external payable OnlyOwner {
         require(msg.value >= amt, "Payment Incomplete");
-        DoctorInfo[_drId] = Doctor(_state, _drId, _name);
+        DoctorInfo[_drId] = Doctor(_state, _drId, _name, _speciality);
         emit DrDetailsAdded(msg.sender, _drId);
     }
 
@@ -81,32 +85,35 @@ contract MedicalChain {
         returns (
             bool _state,
             address _drId,
-            string memory _name
+            string memory _name,
+            string memory _speciality
         )
     {
         _state = DoctorInfo[_Id].state;
         _drId = DoctorInfo[_Id].dr_Id;
         _name = DoctorInfo[_Id].d_Name;
+        _speciality = DoctorInfo[_Id].d_speciality;
     }
 
     // Function to add HealthRecords of patients, done by registered doctors only
     function setHealthRecordsDetails(
-        string memory _paName,
+        address sender,
         address _paId,
         string memory _prescription
     ) public Only_Doctors {
-        HealthInfo[msg.sender][_paId].d.d_Name = DoctorInfo[msg.sender].d_Name;
-        HealthInfo[msg.sender][_paId].d.dr_Id = DoctorInfo[msg.sender].dr_Id;
-        HealthInfo[msg.sender][_paId].p.state = true;
-        HealthInfo[msg.sender][_paId].p.pa_Id = _paId;
-        HealthInfo[msg.sender][_paId].p.pa_Name = _paName;
-        HealthInfo[msg.sender][_paId].pre.prescription = _prescription;
-        HealthInfo[msg.sender][_paId].records.push(_prescription);
+        HealthInfo[sender][_paId].d.d_Name = DoctorInfo[sender].d_Name;
+        HealthInfo[sender][_paId].d.dr_Id = DoctorInfo[sender].dr_Id;
+        // HealthInfo[sender][_paId].p.state = true;
+        // HealthInfo[sender][_paId].p.pa_Id = _paId;
+        HealthInfo[sender][_paId].pre.prescription = _prescription;
+        HealthInfo[sender][_paId].records.push(_prescription);
         PatientInfo[_paId].pa_Records.push(_prescription);
         setPatientDetails(
-            HealthInfo[msg.sender][_paId].p.state,
-            HealthInfo[msg.sender][_paId].p.pa_Id,
-            HealthInfo[msg.sender][_paId].p.pa_Name,
+            HealthInfo[sender][_paId].p.state,
+            HealthInfo[sender][_paId].p.pa_Id,
+            HealthInfo[sender][_paId].p.pa_Name,
+            HealthInfo[sender][_paId].p.pa_BloodGroup,
+            HealthInfo[sender][_paId].p.hospital,
             PatientInfo[_paId].pa_Records
         );
         emit HealthRecordsAdded(msg.sender, _paId);
@@ -117,10 +124,19 @@ contract MedicalChain {
         bool _state,
         address _paId,
         string memory _paName,
+        string memory _paBloodGroup,
+        address _hospital,
         string[] memory _paRecords
     ) public payable Only_Doctors {
         require(msg.value >= amt, "Payment Incomplete");
-        PatientInfo[_paId] = Patient(_state, _paId, _paName, _paRecords);
+        PatientInfo[_paId] = Patient(
+            _state,
+            _paId,
+            _paName,
+            _paBloodGroup,
+            _hospital,
+            _paRecords
+        );
         emit PatDetailsAdded(msg.sender, _paId);
     }
 
