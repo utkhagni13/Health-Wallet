@@ -39,7 +39,13 @@ const AddDoctor = (props) => {
                             onChange={(e) => setSpec(e.target.value)}
                         />
                     </div>
-                    <button onClick={handleRegister}>REGISTER</button>
+                    <button
+                        className="button"
+                        style={{ fontSize: "1.25rem", textTransform: "uppercase" }}
+                        onClick={handleRegister}
+                    >
+                        REGISTER
+                    </button>
                 </div>
             </div>
         </div>

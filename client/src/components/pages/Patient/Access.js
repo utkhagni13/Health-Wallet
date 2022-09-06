@@ -24,7 +24,13 @@ const Access = (props) => {
                         className="inp"
                         onChange={(e) => setDocAddr(e.target.value)}
                     />
-                    <button onClick={handleRegister}>Grant</button>
+                    <button
+                        className="button"
+                        style={{ fontSize: "1.25rem", textTransform: "uppercase" }}
+                        onClick={handleRegister}
+                    >
+                        Grant
+                    </button>
                     <p style={{ color: "green" }}>{access ? "Access Granted" : ""}</p>
                 </div>
             </div>

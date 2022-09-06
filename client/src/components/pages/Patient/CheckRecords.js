@@ -34,7 +34,13 @@ const CheckRecords = (props) => {
                             className="inp"
                             onChange={(e) => setAddr(e.target.value)}
                         />
-                        <button onClick={handleSearch}>Get Details</button>
+                        <button
+                            className="button"
+                            style={{ fontSize: "1.25rem", textTransform: "uppercase" }}
+                            onClick={handleSearch}
+                        >
+                            Get Details
+                        </button>
                     </div>
                     <p>Search Results</p>
                     <p>Address: {patientDetails._paId}</p>

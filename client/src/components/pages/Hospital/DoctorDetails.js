@@ -31,7 +31,13 @@ const DoctorDetails = (props) => {
                             className="inp"
                             onChange={(e) => setDocAddr(e.target.value)}
                         />
-                        <button onClick={handleSearch}>Search</button>
+                        <button
+                            className="button"
+                            style={{ fontSize: "1.25rem", textTransform: "uppercase" }}
+                            onClick={handleSearch}
+                        >
+                            Search
+                        </button>
                     </div>
                     <p>Search Results</p>
                     <p>Name: {doctorSearch._name}</p>
