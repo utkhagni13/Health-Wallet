@@ -12,13 +12,14 @@ const CheckRecords = (props) => {
             details = await props.getPatientDetails(addr);
             console.log(details);
             if (!details._state) {
-                details._name = "N.A.";
-                details._paId = "N.A.";
-                details.records = "N.A.";
+                alert("PATIENT NOT REGISTERED");
+            } else {
+                setPatientDetails(details);
+                setImageArray(details._paRecords);
             }
+        } else {
+            alert("MISSING DETAILS");
         }
-        setPatientDetails(details);
-        setImageArray(details._paRecords);
     };
 
     return (

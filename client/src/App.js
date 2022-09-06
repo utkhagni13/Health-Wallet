@@ -41,7 +41,8 @@ const App = () => {
             gas: Web3.utils.toHex(800000),
             gasPrice: Web3.utils.toHex(Web3.utils.toWei("10", "gwei")),
         });
-        console.log(response);
+        console.log("res-msg: ", response);
+        return response;
     };
 
     const registerPatient = async (details) => {
@@ -83,9 +84,18 @@ const App = () => {
         console.log(currentAccount);
         const response = await ehrContract.methods
             .grantAccessToDoctor(currentAccount, addr, 1)
-            .call();
+            .send({
+                from: currentAccount,
+                gas: Web3.utils.toHex(800000),
+                gasPrice: Web3.utils.toHex(Web3.utils.toWei("10", "gwei")),
+            });
         console.log(response);
         return response;
+    };
+
+    const getHealthRecords = async (addr) => {
+        const response = await ehrContract.methods.getHealthRecords(addr, currentAccount).call();
+        console.log(response);
     };
 
     const onLogin = async (provider) => {
@@ -134,7 +144,12 @@ const App = () => {
                             />
                             <Route
                                 path="/doctor/patient-records"
-                                element={<PatientDetails getPatientDetails={getPatientDetails} />}
+                                element={
+                                    <PatientDetails
+                                        getPatientDetails={getPatientDetails}
+                                        getHealthRecords={getHealthRecords}
+                                    />
+                                }
                             />
                             <Route
                                 path="/patient/records"

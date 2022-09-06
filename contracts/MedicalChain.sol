@@ -74,6 +74,7 @@ contract MedicalChain {
         string memory _speciality
     ) external payable OnlyOwner {
         require(msg.value >= amt, "Payment Incomplete");
+        require(DoctorInfo[_drId].state == false, "Doctor already registered");
         DoctorInfo[_drId] = Doctor(_state, _drId, _name, _speciality);
         emit DrDetailsAdded(msg.sender, _drId);
     }
@@ -132,6 +133,10 @@ contract MedicalChain {
         string[] memory _paRecords
     ) public payable Only_Doctors {
         require(msg.value >= amt, "Payment Incomplete");
+        require(
+            PatientInfo[_paId].state == false,
+            "Patient already registered"
+        );
         PatientInfo[_paId] = Patient(
             _state,
             _paId,
@@ -178,7 +183,8 @@ contract MedicalChain {
         require(
             PatientInfo[sender].state == true ||
                 patientToDoctor[_Id][sender] == 1,
-            toString(sender)
+            "User not registered"
+            // string.concat("Sender - ",toString(sender),"IDPatient - ",toString(_Id))
         );
         _state = PatientInfo[_Id].state;
         _paId = PatientInfo[_Id].pa_Id;

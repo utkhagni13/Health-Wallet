@@ -3,13 +3,12 @@ import React, { useState } from "react";
 const Access = (props) => {
     const [docAddr, setDocAddr] = useState("");
     // const [doctorSearch, setDoctorSearch] = useState({});
-    const [access, setAccess] = useState(false);
 
     const handleRegister = async () => {
         if (docAddr.length === 42) {
             await props.grantDoctorAccess(docAddr);
+            alert("ACCESS GRANTED");
         }
-        setAccess(true);
     };
 
     return (
@@ -31,7 +30,7 @@ const Access = (props) => {
                     >
                         Grant
                     </button>
-                    <p style={{ color: "green" }}>{access ? "Access Granted" : ""}</p>
+                    {/* <p style={{ color: "green" }}>{access ? "Access Granted" : ""}</p> */}
                 </div>
             </div>
         </div>

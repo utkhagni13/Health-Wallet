@@ -1,24 +1,24 @@
 import { useState } from "react";
+import Image from "../../shared/Image";
 
 const PatientDetails = (props) => {
     const [patAddr, setPatAddr] = useState("");
     const [patientSearch, setPatientSearch] = useState({});
+    const [imageArray, setImageArray] = useState([]);
 
-    const handleSearch = () => {
+    const handleSearch = async () => {
         let details = {};
-        // if (patAddr.length === 42) {
-        //     // details = await props.getPatientDetails(patAddr);
-        //     console.log(details);
-        //     if (details._state) setPatientSearch(details);
-        //     else {
-        //         details._paName = "N.A.";
-        //         details._paId = "N.A.";
-        //     }
-        // }
-        details._paName = "Patient-1";
-        details._paRecords = "N.A.";
-        details._paId = "0x1cF00ec03AA1796232bA00ED341780Dacd6dd378";
-        setPatientSearch(details);
+        if (patAddr.length === 42) {
+            details = await props.getPatientDetails(patAddr);
+            console.log(details);
+            if (details._state) {
+                setPatientSearch(details);
+                setImageArray(details._paRecords);
+            } else {
+                alert("SOME ERROR OCCURED");
+            }
+            // await props.getHealthRecords(patAddr);
+        }
     };
 
     return (
@@ -44,7 +44,22 @@ const PatientDetails = (props) => {
                 <p>Search Results</p>
                 <p>Name: {patientSearch._paName}</p>
                 <p>Address: {patientSearch._paId}</p>
-                <p>Records: {patientSearch._paRecords}</p>
+                <div style={{ display: "flex", gap: "200px" }}>
+                    <p style={{ margin: "0", padding: "0" }}>Age: {patientSearch._paAge}</p>
+                    <p style={{ margin: "0", padding: "0" }}>
+                        Blood Group: {patientSearch._paBloodGroup}
+                    </p>
+                </div>
+                <p>Records Appear Below:</p>
+                <div className="display__images">
+                    {imageArray.map((src, idx) => {
+                        return (
+                            <div key={idx} className="image__input">
+                                <Image details={{ src: src, index: idx }} handleDelete={null} />
+                            </div>
+                        );
+                    })}
+                </div>
             </div>
         </div>
     );

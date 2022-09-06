@@ -5,9 +5,14 @@ const AddDoctor = (props) => {
     const [addr, setAddr] = useState("");
     const [spec, setSpec] = useState("");
 
-    const handleRegister = () => {
+    const handleRegister = async () => {
         if (name.length > 0 && spec.length > 0 && addr.length === 42) {
-            props.registerDoctor(name, spec, addr);
+            const response = await props.registerDoctor(name, spec, addr);
+            if (response.status === undefined || response.status === false) {
+                alert("DOCTOR ALREADY REGISTERED");
+            } else {
+                alert("DOCTOR SUCCESSFULLY REGISTERED");
+            }
         } else {
             alert("INVALID DETAILS");
         }
