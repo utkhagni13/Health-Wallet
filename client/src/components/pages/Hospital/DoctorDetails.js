@@ -12,6 +12,7 @@ const DoctorDetails = (props) => {
             if (!details._state) {
                 details._name = "N.A.";
                 details._drId = "N.A.";
+                details._speciality = "N.A.";
             }
         }
         setDoctorSearch(details);
@@ -30,11 +31,18 @@ const DoctorDetails = (props) => {
                             className="inp"
                             onChange={(e) => setDocAddr(e.target.value)}
                         />
-                        <button onClick={handleSearch}>Search</button>
+                        <button
+                            className="button"
+                            style={{ fontSize: "1.25rem", textTransform: "uppercase" }}
+                            onClick={handleSearch}
+                        >
+                            Search
+                        </button>
                     </div>
                     <p>Search Results</p>
                     <p>Name: {doctorSearch._name}</p>
                     <p>Address: {doctorSearch._drId}</p>
+                    <p>Department: {doctorSearch._speciality}</p>
                 </div>
             </div>
         </div>
