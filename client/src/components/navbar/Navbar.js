@@ -105,6 +105,11 @@ const generalNavlist = [
     },
 ];
 
+const getAccount = (A) => {
+    const len = A.length;
+    return A[0] + A[1] + A[2] + "...." + A[len - 4] + A[len - 3] + A[len - 2] + A[len - 1];
+};
+
 const Navbar = ({ loggedIn, account, role }) => {
     const [navbarState, setNavbarState] = useState({
         mobileView: false,
@@ -123,6 +128,7 @@ const Navbar = ({ loggedIn, account, role }) => {
     const DisplayDesktop = () => {
         return (
             <div className="links">
+                <p>{!loggedIn ? "Not Loggedin" : "YOUR ACCOUNT: " + getAccount(account)}</p>
                 {(loggedIn ? getNavList() : generalNavlist).map((item, index) => {
                     return (
                         <p
@@ -170,6 +176,7 @@ const Navbar = ({ loggedIn, account, role }) => {
                     onStateChange={(state) => handleDrawerClose(state.isOpen)}
                     right
                 >
+                    <p>{!loggedIn ? "Not Loggedin" : "YOUR ACCOUNT: " + getAccount(account)}</p>
                     <div>
                         {(loggedIn ? getNavList() : generalNavlist).map((item, index) => {
                             return (

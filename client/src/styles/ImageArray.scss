@@ -1,0 +1,72 @@
+.display__images {
+    display: flex;
+    width: 100%;
+    background-color: var(--container-color);
+    gap: 10px;
+    padding: var(--mb-1);
+    border: 1px solid var(--text-color);
+}
+
+.no__display {
+    display: none;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    // border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+}
+
+.image__input {
+    display: flex;
+    gap: 5px;
+    position: relative;
+    img {
+        width: 100%;
+        border: 1px solid var(--text-color);
+        max-width: 8rem;
+    }
+    img:hover {
+        cursor: pointer;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+    }
+
+    .delete__img__icon {
+        position: absolute;
+        top: 0;
+        right: 0;
+        cursor: pointer;
+    }
+    .delete__img__icon:hover {
+        border: 3px solid red;
+        border-radius: 50%;
+    }
+}
+
+// .image__input{
+//     display: flex;
+//     align-items: center;
+//     input{
+//         margin-top: var(--mb-1);
+//         padding: 5px 15px;
+//         flex: 1;
+//         outline: none;
+//     }
+//     span{
+//         cursor: pointer;
+//         margin: var(--mb-1) 0 0 2px;
+//     }
+// }
+// .image__input__saved{
+//     border: none;
+//     border-bottom: 1px solid var(--text-color-light);
+//     background-color: var(--body-color);
+//     color:var(--text-color-alt);
+// }
+// .add__btn{
+//     margin: var(--mb-1) 0 var(--mb-3) 0;
+// }

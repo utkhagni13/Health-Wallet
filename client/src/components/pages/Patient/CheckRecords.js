@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import Image from "../../shared/Image";
 
 const CheckRecords = (props) => {
     const [addr, setAddr] = useState("");
     const [patientDetails, setPatientDetails] = useState({});
+    const [imageArray, setImageArray] = useState([]);
 
     const handleSearch = async () => {
         let details;
@@ -12,10 +14,11 @@ const CheckRecords = (props) => {
             if (!details._state) {
                 details._name = "N.A.";
                 details._paId = "N.A.";
+                details.records = "N.A.";
             }
         }
-        details.records = "N.A.";
         setPatientDetails(details);
+        setImageArray(details._paRecords);
     };
 
     return (
@@ -34,9 +37,24 @@ const CheckRecords = (props) => {
                         <button onClick={handleSearch}>Get Details</button>
                     </div>
                     <p>Search Results</p>
-                    <p>Name: {patientDetails._paName}</p>
                     <p>Address: {patientDetails._paId}</p>
-                    <p>Records: {patientDetails.records}</p>
+                    <p>Name: {patientDetails._paName}</p>
+                    <div style={{ display: "flex", gap: "200px" }}>
+                        <p style={{ margin: "0", padding: "0" }}>Age: {patientDetails._paAge}</p>
+                        <p style={{ margin: "0", padding: "0" }}>
+                            Blood Group: {patientDetails._paBloodGroup}
+                        </p>
+                    </div>
+                    <p>Records Appear Below:</p>
+                    <div className="display__images">
+                        {imageArray.map((src, idx) => {
+                            return (
+                                <div key={idx} className="image__input">
+                                    <Image details={{ src: src, index: idx }} handleDelete={null} />
+                                </div>
+                            );
+                        })}
+                    </div>
                 </div>
             </div>
         </div>

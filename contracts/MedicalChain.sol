@@ -32,7 +32,7 @@ contract MedicalChain {
     }
 
     address public owner;
-    uint256 amt = 1e16;
+    uint256 amt = 1e15;
 
     constructor() {
         owner = msg.sender;
@@ -48,8 +48,9 @@ contract MedicalChain {
     struct Patient {
         bool state; // To check whether patient is genuine
         address pa_Id; // Address of registered patient
-        string pa_Name; // Name of Patient Name
-        string pa_BloodGroup; // blood group of the patient
+        string pa_Name; // Name of Patient
+        uint32 pa_Age; // Age of Patient
+        string pa_BloodGroup; // Blood group of the patient
         address hospital; // Hospital maintaining health records of the patient
         string[] pa_Records; // Used to store the prescription records of corresponding patients
     }
@@ -112,11 +113,12 @@ contract MedicalChain {
             HealthInfo[sender][_paId].p.state,
             HealthInfo[sender][_paId].p.pa_Id,
             HealthInfo[sender][_paId].p.pa_Name,
+            HealthInfo[sender][_paId].p.pa_Age,
             HealthInfo[sender][_paId].p.pa_BloodGroup,
             HealthInfo[sender][_paId].p.hospital,
             PatientInfo[_paId].pa_Records
         );
-        emit HealthRecordsAdded(msg.sender, _paId);
+        emit HealthRecordsAdded(sender, _paId);
     }
 
     // Function to add Patient details, done by registered doctors only
@@ -124,6 +126,7 @@ contract MedicalChain {
         bool _state,
         address _paId,
         string memory _paName,
+        uint32 _paAge,
         string memory _paBloodGroup,
         address _hospital,
         string[] memory _paRecords
@@ -133,6 +136,7 @@ contract MedicalChain {
             _state,
             _paId,
             _paName,
+            _paAge,
             _paBloodGroup,
             _hospital,
             _paRecords
@@ -165,6 +169,9 @@ contract MedicalChain {
             bool _state,
             address _paId,
             string memory _paName,
+            uint32 _paAge,
+            string memory _paBloodGroup,
+            address _hospital,
             string[] memory _paRecords
         )
     {
@@ -176,6 +183,9 @@ contract MedicalChain {
         _state = PatientInfo[_Id].state;
         _paId = PatientInfo[_Id].pa_Id;
         _paName = PatientInfo[_Id].pa_Name;
+        _paAge = PatientInfo[_Id].pa_Age;
+        _paBloodGroup = PatientInfo[_Id].pa_BloodGroup;
+        _hospital = PatientInfo[_Id].hospital;
         _paRecords = PatientInfo[_Id].pa_Records;
     }
 

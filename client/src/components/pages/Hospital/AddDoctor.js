@@ -8,6 +8,8 @@ const AddDoctor = (props) => {
     const handleRegister = () => {
         if (name.length > 0 && spec.length > 0 && addr.length === 42) {
             props.registerDoctor(name, spec, addr);
+        } else {
+            alert("INVALID DETAILS");
         }
     };
 

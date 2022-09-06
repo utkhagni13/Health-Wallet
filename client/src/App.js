@@ -23,6 +23,7 @@ import "./styles/Common.scss";
 import "./styles/Navbar.scss";
 import "./styles/About.scss";
 import "./styles/Login.scss";
+import "./styles/ImageArray.scss";
 import "./styles/HomePage.scss";
 
 const App = () => {
@@ -43,13 +44,23 @@ const App = () => {
         console.log(response);
     };
 
-    const registerPatient = async (name, addr) => {
-        const response = await ehrContract.methods.setPatientDetails(1, addr, name, []).send({
-            from: currentAccount,
-            value: Web3.utils.toWei("0.01"),
-            gas: Web3.utils.toHex(800000),
-            gasPrice: Web3.utils.toHex(Web3.utils.toWei("10", "gwei")),
-        });
+    const registerPatient = async (details) => {
+        const response = await ehrContract.methods
+            .setPatientDetails(
+                1,
+                details.addr,
+                details.name,
+                details.age,
+                details.bloodGrp,
+                details.hospitalAddr,
+                details.imageArray
+            )
+            .send({
+                from: currentAccount,
+                value: Web3.utils.toWei("0.01"),
+                gas: Web3.utils.toHex(800000),
+                gasPrice: Web3.utils.toHex(Web3.utils.toWei("10", "gwei")),
+            });
         console.log(response);
     };
 

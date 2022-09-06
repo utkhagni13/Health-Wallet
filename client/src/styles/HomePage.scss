@@ -46,17 +46,19 @@
     flex-direction: column;
     gap: 20px;
     font-size: 1rem;
-    button {
-        cursor: pointer;
-        border: 1px solid #741188;
-        border-radius: 30px;
-        padding: 10px;
-        color: white;
-        background: #741188;
-        width: 50%;
-        margin-left: auto;
-        margin-right: auto;
-    }
+    // button {
+    //     cursor: pointer;
+    //     border: 1px solid #741188;
+    //     border-radius: 30px;
+    //     padding: 10px;
+    //     color: white;
+    //     background: #741188;
+    //     width: 50%;
+    //     margin-left: auto;
+    //     font-size: 1.25rem;
+    //     text-transform: uppercase;
+    //     margin-right: auto;
+    // }
 }
 
 .inside_welcome {
@@ -73,21 +75,7 @@
     border: 1px solid black;
     border-width: 2px;
     border-radius: 20px;
-}
-
-.tickets {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    padding: 20px;
-}
-
-.ticket {
-    /* margin-bottom: 10px; */
-    border: 2px solid black;
-    border-radius: 10px;
-    text-align: center;
-    padding: 10px;
+    font-size: 1.25rem;
 }
 
 @media screen and (max-width: 768px) {
