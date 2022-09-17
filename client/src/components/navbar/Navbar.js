@@ -62,12 +62,12 @@ const patientnavlist = [
     {
         name: "DONATE BLOOD",
         icon: <BiDonateBlood />,
-        path: "/patient/access",
+        path: "/patient/become-donor",
     },
     {
         name: "GET BLOOD",
         icon: <MdBloodtype />,
-        path: "/patient/access",
+        path: "/patient/receive-blood",
     },
 ];
 

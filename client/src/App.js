@@ -16,6 +16,8 @@ import AddDoctor from "./components/pages/Hospital/AddDoctor";
 import DoctorDetails from "./components/pages/Hospital/DoctorDetails";
 import AddPatient from "./components/pages/Doctor/AddPatient";
 import PatientDetails from "./components/pages/Doctor/PatientDetails";
+import Donors from "./components/pages/Patient/Donors";
+import GetBlood from "./components/pages/Patient/GetBlood";
 
 /******** Styles ********/
 import "./App.css";
@@ -159,6 +161,11 @@ const App = () => {
                                 path="/patient/access"
                                 element={<Access grantDoctorAccess={grantDoctorAccess} />}
                             />
+                            <Route
+                                path="/patient/become-donor"
+                                element={<Donors getPatientDetails={getPatientDetails} />}
+                            />
+                            <Route path="/patient/receive-blood" element={<GetBlood />} />
                         </Routes>
                     )}
                 </main>

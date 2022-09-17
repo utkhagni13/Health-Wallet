@@ -12,6 +12,7 @@ contract MedicalChain {
     event PatDetailsAdded(address doctor, address patient);
     event HealthRecordsAdded(address dr, address patient);
     event GrantAccessToDr(address dr, address patient);
+    event RevokeAccessToDr(address dr, address patient);
 
     modifier OnlyOwner() {
         require(msg.sender == owner, "ONLY ADMIN IS ALLOWED");
@@ -223,9 +224,19 @@ contract MedicalChain {
         address doctor_id,
         uint256 access
     ) public {
-        require(PatientInfo[sender].state == true, toString(sender));
+        require(PatientInfo[sender].state == true, "Patient not Registered");
         patientToDoctor[sender][doctor_id] = access;
         emit GrantAccessToDr(doctor_id, sender);
+    }
+
+    function revokeAccessFromDoctor(address sender, address doctor_id) public {
+        require(PatientInfo[sender].state == true, "Patient not Registered");
+        require(
+            patientToDoctor[sender][doctor_id] > 0,
+            "Doctor already does not have access"
+        );
+        patientToDoctor[sender][doctor_id] = 0;
+        emit RevokeAccessToDr(doctor_id, sender);
     }
 
     // Function to get HealthRecords only for registered Doctors
